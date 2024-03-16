@@ -19,6 +19,7 @@ module.exports.getBooks = (httpRequest) => {
   const schema = Joi.object({
     catergory_id: Joi.string().custom(validateMongooseId),
     author_id: Joi.string().custom(validateMongooseId),
+    search: Joi.string(),
   });
   return schema.validate(httpRequest.query, options);
 };

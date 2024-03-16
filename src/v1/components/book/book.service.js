@@ -14,8 +14,11 @@ const doGetBookById = async (payload) => {
 };
 const doGetBooks = async (payload) => {
   try {
-    const { category_id, author_id, limit, offset } = payload;
+    const { category_id, author_id, limit, offset, search } = payload;
     let query = {};
+    if (search) {
+      query.name = new RegExp(search, 'i');
+    }
     if (author_id) {
       query.author_id = author_id;
     }
